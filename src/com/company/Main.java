@@ -10,34 +10,31 @@ public class Main {
         // Enter in n
         int n = input.nextInt();
         int values[] = new int[n]; // Array to hold each value within the Fibonacci sequence.
+        values[0] = 0; // First value in the Fibonacci sequence.
+        values[1] = 1; // Second value in the Fibonacci sequence.
 
-        // Recursively calculate Fibonacci up to nth term
-
-        // Iteratively calculate Fibonacci up to nth term
-        fiboSeriesIte(n, values);
-
+        fiboSeriesRec(n, values);// Recursively calculate Fibonacci up to nth term
+        //fiboSeriesIte(n, values); // Iteratively calculate Fibonacci up to nth term
+        displayFiboSeries(values); // Display the Fibonacci sequence.
     }
 
     public static void fiboSeriesRec(int n, int[] values) {
-        int count = 0;
-        int currentValue = 0;
+        int count = 2;
 
         fiboSeriesRec(n, count, values);
     }
 
     public static void fiboSeriesRec(int n, int count, int values[])
     {
-        if (count < n)
+        if (count < n) // Continue until n
         {
-
+            values[count] = values[count - 1] + values[count - 2]; // Current value equals the previous two values within the sequence.
+            fiboSeriesRec(n, count + 1, values);
         }
     }
 
     public static void fiboSeriesIte(int n, int[] values)
     {
-        values[0] = 0; // First value in the Fibonacci sequence.
-        values[1] = 1; // Second value in the Fibonacci sequence.
-
         for (int i = 2; i < n; i++) // Start at step two, to avoid adding negative numbers.
         {
             values[i] = values[i-1] + values[i-2]; // Current value equals the previous two values within the sequence.
